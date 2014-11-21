@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 2.8.3)
+project(rosopencv)
+
+## Find catkin macros and libraries
+## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
+## is used, also find other catkin packages
+find_package(
+  catkin REQUIRED COMPONENTS
+    sensor_msgs
+    roscpp
+    image_transport
+    std_msgs
+  OpenCV REQUIRED COMPONENTS
+
+  cv_bridge
+  
+
+
+  
+  
+)
+include_directories(  ${catkin_INCLUDE_DIRS}  ${OpenCV_INCLUDE_DIRS} )
+add_library(graph MarkovModule/graph.cpp)
+add_library(maxflow MarkovModule/maxflow.cpp)
+add_executable(my_subsc my_subsc.cpp )
+target_link_libraries (my_subsc graph maxflow ${OpenCV_LIBRARIES} ${catkin_LIBRARIES} )
+## CMakeLists.txt for roadmidpoint.cpp in this repository
