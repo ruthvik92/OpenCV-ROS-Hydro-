@@ -5,7 +5,7 @@
 using namespace std;
 std_msgs::Int16 msg;
 int a=0;
-void chatterCallback(const std_msgs::Int16 msg)
+void chatterCallback(const std_msgs::Int16 msg) //this code i should be using
 {
 a=msg.data;
 }
