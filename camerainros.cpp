@@ -7,7 +7,7 @@
 
 static const std::string OPENCV_WINDOW = "Image window";
 
-class ImageConverter
+class ImageConverter                            ///##class for convertign ros images to opencv. 
 {
   ros::NodeHandle nh_;
   image_transport::ImageTransport it_;
@@ -19,9 +19,9 @@ public:
     : it_(nh_)
   {
     // Subscrive to input video feed and publish output video feed
-    image_sub_ = it_.subscribe("/camera/image_raw", 1, 
+    image_sub_ = it_.subscribe("/camera/image_raw", 1,               ////subscribe to the camera topic 
       &ImageConverter::imageCb, this);
-    image_pub_ = it_.advertise("/image_converter/output_video", 1);
+    image_pub_ = it_.advertise("/image_converter/output_video", 1); ////publish the video output.
 
     cv::namedWindow(OPENCV_WINDOW);
   }
@@ -31,7 +31,7 @@ public:
   //  cv::destroyWindow(OPENCV_WINDOW);
   //}
 
-  void imageCb(const sensor_msgs::ImageConstPtr& msg)
+  void imageCb(const sensor_msgs::ImageConstPtr& msg) ////function to convert ros images opencv images.
   {
     cv_bridge::CvImagePtr cv_ptr;
     try
