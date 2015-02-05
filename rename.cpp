@@ -1,4 +1,4 @@
-#include <stdio.h> /////code to rename jpg files in a folder node_0_0.jpg to node00_0.jpg
+#include <stdio.h> /////code to rename jpg files in afolder
 #include <opencv2/opencv.hpp>
 #include <sstream>
 #include<iostream>
@@ -25,10 +25,20 @@ if( !image.data )
    printf( " No image data \n " );
    printf("i:",i);
    return -1;
- }       
-string ssave1 = "/home/iiith/Desktop/editname/" + std::string("node0")+ss1.str()+std::string("_") +ss.str()+".jpg"; ///jus change the path of your destination ".pgm" files///
+ }  
+ if(j<10) 
+ {    
+string ssave1 = "/home/iiith/Desktop/editname/" + std::string("node0")+ss1.str() +ss.str()+".jpg"; ///jus change the path of your destination ".pgm" files///
 imwrite( ssave1, image );
  waitKey(100000);
+}
+else
+{
+
+string ssave1 = "/home/iiith/Desktop/editname/" + std::string("node")+ss1.str() +ss.str()+".jpg"; ///jus change the path of your destination ".pgm" files///
+imwrite( ssave1, image );
+ waitKey(100000);
+}
 }
 }
  return 0;
