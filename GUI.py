@@ -44,16 +44,16 @@ def update_lines(num, dataLines, lines) :
 
 # Attaching 3D axis to the figure
 fig = plt.figure()
-ax = fig.add_subplot((221), projection='3d')
-ax2 = fig.add_subplot(222)
+ax = fig.add_subplot((111), projection='3d')
+ax2 = fig.add_subplot(551)
 ax2.set_title("Query Image ")
-ax3=fig.add_subplot(223)
+ax3=fig.add_subplot(555)
 ax3.set_title("Nearest Image-1 match found to the Query Image ")
-ax3=fig.add_subplot(224)
+ax3=fig.add_subplot(556)
 ax3.set_title("Nearest Image-2 match found to the Query Image")
 cax=ax2.imshow(arr, cmap = cm.Greys_r)
-fig.colorbar(cax)
-#ax2.plt.imshow(arr, cmap = cm.Greys_r)
+#fig.colorbar(cax)
+##ax2.plt.imshow(arr, cmap = cm.Greys_r)
 # Fifty lines of random 3-D lines
 data = [Gen_RandLine(25, 3) for index in range(3)]
 
