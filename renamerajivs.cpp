@@ -4,73 +4,43 @@
 #include <cstdio>
 #include <string>
 #include <iostream>
-
+#include <sstream>
+#include <iomanip>
 using namespace std;
+int main()
+{
+std::string directory;
 
-int listdir(const char *path, vector<string>& list) {
-  struct dirent *entry;
-  DIR *dp;
- 
-  dp = opendir(path);
-  if (dp == NULL) {
-    perror("opendir");
-    return -1;
-  }
- 
-  while((entry = readdir(dp)))
-     list.push_back(entry->d_name);
- 
-  closedir(dp);
-  return 0;
+std::cout << "Enter directory: ";
+std::cin >> directory;
+DIR *pdir = NULL;
+struct dirent *pent = NULL;
+const char * DIRECTORY;
+
+// convert directory string to const char
+DIRECTORY = directory.c_str();
+
+pdir = opendir (DIRECTORY);
+
+int i = -2;
+std::string s, oldname, newname;
+const char * OLDNAME, * NEWNAME;
+
+while (pent = readdir (pdir))
+{
+    // convert int i to str s
+    std::stringstream out;
+    out << setfill('0')<< setw(5) << i;
+    s = out.str();
+
+    oldname = (std::string(DIRECTORY)+pent->d_name).c_str();
+    newname = (std::string(DIRECTORY)+"f"+s+".png").c_str();
+
+    OLDNAME = oldname.c_str();
+    NEWNAME = newname.c_str();
+
+    rename(OLDNAME, NEWNAME);
+
+    i++;
+} 
 }
- 
-int main(int argc, char **argv) {
-
-  int counter = 1;
-  
-  vector<string> fileList;
-  	 
-  if (argc == 1)
-	listdir(".",fileList); /// fill the fileList vector with lisdir//files in current directory.
- 
-  while (++counter <= argc) {
-    printf("\nListing %s...\n", argv[counter-1]);
-    listdir(argv[counter-1],fileList);
-  }
- 
-   vector<string>::iterator v = fileList.begin();
-   while( v != fileList.end()) {
-      cout << "value of v = " << *v << endl;
-      v++;
-	
-  // refer this link http://www.cplusplus.com/reference/cstdio/rename/
-  // fileList will have list of all the files in the directory 
- // now u have to parse every filename and rename it according to the pattern u want 
-   }
-  return 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
