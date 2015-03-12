@@ -1,3 +1,7 @@
+####this program plots bunch of points in 3D space with points in different colors. 3dpoints_curve.txt has 3D points and
+##hexstring.txt has color for each point.##
+
+
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
