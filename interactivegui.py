@@ -9,8 +9,8 @@ import time
 plt.ion() ### interactive plotting.
 plt.show()
 #ax = fig.add_subplot(111, projection='3d')
-f=open("/home/iiith/Desktop/hex/3dpoints_dataset_side3_far_rotation0.txt", 'r') 
-f1=open("/home/iiith/Desktop/hex/side_3_far.txt", 'r') 
+f=open("/home/iiith/Desktop/hex/3dpoints_dataset_side3_far_rotation0.txt", 'r') #3d points.
+f1=open("/home/iiith/Desktop/hex/side_3_far.txt", 'r') #robot movement.
 data=f.read()
 data2=f1.read()
 #print data
@@ -47,7 +47,7 @@ ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 ax.set_title("3D recostruction.")
-f1=open("/home/iiith/Desktop/hex/color_dataset_side3_far_rotation0.txt", 'a+')
+f1=open("/home/iiith/Desktop/hex/color_dataset_side3_far_rotation0.txt", 'a+') ## color of 3D points in HEX 
 data1=f1.read().splitlines()
 ax.plot_wireframe(p1, q1, r)
 #data1= data.split('\n')
